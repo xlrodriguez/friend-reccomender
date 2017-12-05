@@ -14,40 +14,15 @@ class SocialNetwork:
     def add_user(self, user):
         self.users[user] = ''
         print(self.users)
-
-        # '''Add a user to the network
-        #
-        # This user will have no friends initially.
-        #
-        # Arguments:
-        #     user (str): The username of the new user
-        #
-        # Returns:
-        #     None
-        # '''
-        pass  # FIXME
+        return
 
     def add_friend(self, user, friend):
-        self.users[user].append(friend)
-        # '''Adds a friend to a user
-        #
-        # Note that "friends" are one-directional - this is the equivalent of
-        # "following" someone.
-        #
-        # If either the user or the friend is not a user in the network, they
-        # should be added to the network.
-        #
-        # Arguments:
-        #     user (str): The username of the follower
-        #     friend (str): The username of the user being followed
-        #
-        # Returns:
-        #     None
-        # '''
-        pass  # FIXME
+        [user].append(friend)
+        return
 
     def get_friends(self, user):
-        return list(self.users.values())[list(self.users.keys().index(user))]
+        self.users.get(user)
+        pass
 
       # FIXME
 
