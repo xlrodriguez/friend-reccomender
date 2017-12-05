@@ -12,19 +12,18 @@ class SocialNetwork:
         return userslist
 
     def add_user(self, user):
-        self.users[user] = ''
+        list_of_friends=[]
+        self.users[user] = list_of_friends
         print(self.users)
         return
 
     def add_friend(self, user, friend):
-        [user].append(friend)
+        self.users[user].append(friend)
         return
 
     def get_friends(self, user):
-        self.users.get(user)
-        pass
+        return self.users.get(user)
 
-      # FIXME
 
     def suggest_friend(self, user):
         # for i in self.users:
