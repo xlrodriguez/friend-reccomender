@@ -14,7 +14,6 @@ class SocialNetwork:
     def add_user(self, user):
         list_of_friends=[]
         self.users[user] = list_of_friends
-        print(self.users)
         return
 
     def add_friend(self, user, friend):
@@ -24,10 +23,22 @@ class SocialNetwork:
     def get_friends(self, user):
         return self.users.get(user)
 
-
     def suggest_friend(self, user):
-        # for i in self.users:
-            #nested loops
+        jackadic = {}
+        for key in self.users:
+            similar = 0
+            self.users.get(user)
+            #list of alexs friend
+            #go through list of alexs friend
+            #compare to list of otherusers friends
+            #make a mark everytime similar friend
+            #get alexs values
+        #get values of first of alexs friends
+        #get values of second of alexs
+        #add length of list of alexs friends and length of list of otherusers friends
+        #subtract number of similar to give total
+        #divide similar by total (last two steps)
+            get_friends(user)
 
 
         # '''Suggest a friend to the user
