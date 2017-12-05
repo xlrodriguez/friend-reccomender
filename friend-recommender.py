@@ -17,6 +17,8 @@ class SocialNetwork:
         pass # FIXME
 
     def add_user(self, user):
+
+        #poop
         '''Add a user to the network
 
         This user will have no friends initially.
