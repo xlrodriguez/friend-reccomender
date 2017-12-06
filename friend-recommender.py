@@ -26,13 +26,17 @@ class SocialNetwork:
     def suggest_friend(self, user):
         jacardic = []
         for key in self.users:
-            poop_list = self.users.get(user) + self.users.get(key)
-            total_list = self.users.get(user) + self.users.get(key)
-            total_list = set(total_list)
-            total_list = list(total_list)
-            similar = len(poop_list) - len(total_list)
-            total = len(total_list)
-            jacardic.append([similar, total])
+            if not user == key:
+                poop_list = self.users.get(user) + self.users.get(key)
+                total_list = self.users.get(user) + self.users.get(key)
+                total_list = set(total_list)
+                total_list = list(total_list)
+                similar = len(poop_list) - len(total_list)
+                total = len(total_list)
+                jacardic.append([similar, total])
+            print(key)
+            print(user)
+            print(jacardic)
         list_percentage = []
         n = 0
         for i in jacardic:
@@ -40,6 +44,8 @@ class SocialNetwork:
             list_percentage.append(percentage)
             n += 1
         print(list_percentage)
+        print(max(list_percentage))
+        print(list(self.users.keys()))
 
             #list of alexs friend
             #go through list of alexs friend
