@@ -12,7 +12,7 @@ class SocialNetwork:
         return userslist
 
     def add_user(self, user):
-        list_of_friends=[]
+        list_of_friends = []
         self.users[user] = list_of_friends
         return
 
@@ -34,29 +34,34 @@ class SocialNetwork:
                 similar = len(poop_list) - len(total_list)
                 total = len(total_list)
                 jacardic.append([similar, total])
-            print(key)
-            print(user)
-            print(jacardic)
         list_percentage = []
         n = 0
         for i in jacardic:
             percentage = (jacardic[n][0]) / (jacardic[n][1])
             list_percentage.append(percentage)
             n += 1
-        print(list_percentage)
-        print(max(list_percentage))
-        print(list(self.users.keys()))
+        print(self.return_name_of_similar_friend(list_percentage))
 
-            #list of alexs friend
-            #go through list of alexs friend
-            #compare to list of otherusers friends
-            #make a mark everytime similar friend
-            #get alexs values
-        #get values of first of alexs friends
-        #get values of second of alexs
-        #add length of list of alexs friends and length of list of otherusers friends
-        #subtract number of similar to give total
-        #divide similar by total (last two steps)
+    def find_max_index(self, listz):
+        for i, x in enumerate(listz):
+            if x == (max(listz)):
+                max_index = i
+                return max_index
+
+    def return_name_of_similar_friend(self, listz):
+        user_list = list(self.users.keys())
+        return user_list[self.find_max_index(listz)]
+
+        # list of alexs friend
+        # go through list of alexs friend
+        # compare to list of otherusers friends
+        # make a mark everytime similar friend
+        # get alexs values
+        # get values of first of alexs friends
+        # get values of second of alexs
+        # add length of list of alexs friends and length of list of otherusers friends
+        # subtract number of similar to give total
+        # divide similar by total (last two steps)
 
 
         # '''Suggest a friend to the user
@@ -69,7 +74,7 @@ class SocialNetwork:
         # Returns:
         #     str: The username of a new candidate friend for the user
         # '''
-        pass  #FIXME
+        pass  # FIXME
 
     def to_dot(self):
         result = []
