@@ -23,6 +23,13 @@ class SocialNetwork:
     def get_friends(self, user):
         return self.users.get(user)
 
+    def how_many_followers(self, user):
+        num_followers = 0
+        for key in self.users:
+            if user in self.users.get(key):
+                num_followers += 1
+        return num_followers
+
     def suggest_friend(self, user):
         jacardic = []
         for key in self.users:
@@ -40,17 +47,34 @@ class SocialNetwork:
             percentage = (jacardic[n][0]) / (jacardic[n][1])
             list_percentage.append(percentage)
             n += 1
+        print(list_percentage)
+        print(max(list_percentage))
+        print(list(self.users.keys()))
+        name_sim_friend = return_name_of_similar_friend(list_percentage)
+        #call suggest most followed
         print(self.return_name_of_similar_friend(list_percentage))
 
+        pass
     def find_max_index(self, listz):
         for i, x in enumerate(listz):
             if x == (max(listz)):
                 max_index = i
                 return max_index
 
+    def suggest_most_followed(self, name_sim_friend):
+        list_followers = []
+        for friend in self.users.get(name_sim_friend):
+            list_followers.append(self.how_many_followers(friend))
+        print (list_followers)
+        for i in min(list_followers):
+            if i != friend:
+                pass
+        pass
     def return_name_of_similar_friend(self, listz):
         user_list = list(self.users.keys())
         return user_list[self.find_max_index(listz)]
+
+        #find the person whos name occurs most in all keys in dic
 
         # list of alexs friend
         # go through list of alexs friend
@@ -74,6 +98,7 @@ class SocialNetwork:
         # Returns:
         #     str: The username of a new candidate friend for the user
         # '''
+         #FIXME
         pass  # FIXME
 
     def to_dot(self):
