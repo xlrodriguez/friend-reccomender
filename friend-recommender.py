@@ -47,12 +47,10 @@ class SocialNetwork:
             percentage = (jacardic[n][0]) / (jacardic[n][1])
             list_percentage.append(percentage)
             n += 1
-        print(list_percentage)
-        print(max(list_percentage))
-        print(list(self.users.keys()))
-        name_sim_friend = return_name_of_similar_friend(list_percentage)
-        #call suggest most followed
+        name_sim_friend = self.return_name_of_similar_friend(list_percentage)
+        print(name_sim_friend)
         print(self.return_name_of_similar_friend(list_percentage))
+        #call suggest most followed
 
         pass
     def find_max_index(self, listz):
@@ -65,15 +63,21 @@ class SocialNetwork:
         list_followers = []
         for friend in self.users.get(name_sim_friend):
             list_followers.append(self.how_many_followers(friend))
-        print (list_followers)
-        for i in min(list_followers):
-            if i != friend:
-                pass
-        pass
+            pass
+
     def return_name_of_similar_friend(self, listz):
         user_list = list(self.users.keys())
         return user_list[self.find_max_index(listz)]
 
+    def find_max_index_pt_2 (self, list_followers):
+        for i, x in enumerate(list_followers):
+            if x == (max(list_followers)):
+                max_index_pt_2 = i
+        return max_index_pt_2
+
+    def return_name_of_most_followed(self, name_sim_friend):
+        friend_list = list(self.users.get(name_sim_friend))
+        return friend_list[self.find_max_index_pt_2(name_sim_friend)]
         #find the person whos name occurs most in all keys in dic
 
         # list of alexs friend
