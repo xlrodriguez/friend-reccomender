@@ -48,22 +48,26 @@ class SocialNetwork:
             list_percentage.append(percentage)
             n += 1
         name_sim_friend = self.return_name_of_similar_friend(list_percentage)
-        print(name_sim_friend)
-        print(self.return_name_of_similar_friend(list_percentage))
-        #call suggest most followed
+        return self.suggest_most_followed(name_sim_friend, user)
 
-        pass
     def find_max_index(self, listz):
         for i, x in enumerate(listz):
             if x == (max(listz)):
                 max_index = i
                 return max_index
 
-    def suggest_most_followed(self, name_sim_friend):
+    def suggest_most_followed(self, name_sim_friend, user):
         list_followers = []
         for friend in self.users.get(name_sim_friend):
             list_followers.append(self.how_many_followers(friend))
-            pass
+        a = len(list_followers)
+        while a != 0:
+            most_followed = self.users.get(name_sim_friend)[self.find_max_index_pt_2(list_followers)]
+            if most_followed in self.users.get(user):
+                del list_followers[self.find_max_index_pt_2(list_followers)]
+                a -= 1
+            else:
+                return most_followed
 
     def return_name_of_similar_friend(self, listz):
         user_list = list(self.users.keys())
@@ -74,36 +78,6 @@ class SocialNetwork:
             if x == (max(list_followers)):
                 max_index_pt_2 = i
         return max_index_pt_2
-
-    def return_name_of_most_followed(self, name_sim_friend):
-        friend_list = list(self.users.get(name_sim_friend))
-        return friend_list[self.find_max_index_pt_2(name_sim_friend)]
-        #find the person whos name occurs most in all keys in dic
-
-        # list of alexs friend
-        # go through list of alexs friend
-        # compare to list of otherusers friends
-        # make a mark everytime similar friend
-        # get alexs values
-        # get values of first of alexs friends
-        # get values of second of alexs
-        # add length of list of alexs friends and length of list of otherusers friends
-        # subtract number of similar to give total
-        # divide similar by total (last two steps)
-
-
-        # '''Suggest a friend to the user
-        #
-        # See project specifications for details on this algorithm.
-        #
-        # Arguments:
-        #     user (str): The username of the user to find a friend for
-        #
-        # Returns:
-        #     str: The username of a new candidate friend for the user
-        # '''
-         #FIXME
-        pass  # FIXME
 
     def to_dot(self):
         result = []
@@ -138,9 +112,9 @@ def create_network_from_file(filename):
 
 
 def main():
-    network = create_network_from_file('simple.network.txt')
+    network = create_network_from_file('twitter.network.txt')
     print(network.to_dot())
-    print(network.suggest_friend('francis'))
+    print(network.suggest_friend('GWtweets'))
 
 
 if __name__ == '__main__':
